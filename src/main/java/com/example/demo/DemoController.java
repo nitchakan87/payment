@@ -15,13 +15,13 @@ import java.util.Map;
 @Slf4j
 public class DemoController {
     private static final Logger log = LoggerFactory.getLogger(DemoController.class);
-    @GetMapping("/orders")
-    public List<Order> getOrders(@RequestHeader Map<String, String> RequestHeader) {
+    @GetMapping("/payment")
+    public List<Payment> getOrders(@RequestHeader Map<String, String> RequestHeader) {
 
         log.info("request {}", RequestHeader);
         return Arrays.asList(
-                new Order(1L, "book", 1234.00),
-                new Order(2L, "cars", 1224.00),
-                new Order(3L, "disk", 1244.00));
+                new Payment(1L, "book", 1234.00),
+                new Payment(2L, "cars", 1224.00),
+                new Payment(3L, "disk", 1244.00));
     }
 }

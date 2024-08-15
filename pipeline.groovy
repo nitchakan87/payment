@@ -11,7 +11,7 @@ pipeline {
         KUBECTL_HOME = '/opt/homebrew/bin/kubectl'
         BUILD_DATE = new Date().format('yyyy-MM-dd')
         IMAGE_TAG = "${BUILD_DATE}-${BUILD_NUMBER}"
-        IMAGE_NAME = 'orders' // Variable for the image name
+        IMAGE_NAME = 'payment' // Variable for the image name
         DOCKER_USERNAME = 'nitchakan87' // Variable for Docker Hub username
         K8S_NAMESPACE = 'minikube-local'
     }
@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Build Maven') {
             steps {
-                checkout([$class: 'GitSCM', credentialsId: 'githubpwd', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nitchakan87/order-spring.git']]])
+                checkout([$class: 'GitSCM', credentialsId: 'githubpwd', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nitchakan87/payment.git']]])
                 sh 'mvn clean install'
             }
         }
